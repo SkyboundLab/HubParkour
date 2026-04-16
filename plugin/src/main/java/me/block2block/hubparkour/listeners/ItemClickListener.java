@@ -38,9 +38,6 @@ public class ItemClickListener implements Listener {
                 cancelNextEvent.remove(e.getPlayer());
                 return;
             }
-            if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-                cancelNextEvent.add(e.getPlayer());
-            }
             if (e.getItem() != null) {
                 for (int type : CacheManager.getItems().keySet()) {
                     ItemStack itemToFind = CacheManager.getItems().get(type);
@@ -50,6 +47,9 @@ public class ItemClickListener implements Listener {
                             e.getItem().getAmount() == itemToFind.getAmount() &&
                             e.getItem().getDurability() == itemToFind.getDurability();
                     if (found) {
+                        if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
+                            cancelNextEvent.add(e.getPlayer());
+                        }
                         e.setCancelled(true);
                         Player p = e.getPlayer();
                         HubParkourPlayer player = CacheManager.getPlayer(p);

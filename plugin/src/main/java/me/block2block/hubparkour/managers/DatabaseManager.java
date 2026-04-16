@@ -552,10 +552,10 @@ public class DatabaseManager {
                     Material material;
                     try {
                         String mat = result.getString(7);
-                        if (mat == null || mat.isEmpty()) {
+                        if (mat == null || mat.isEmpty() || mat.matches("-?\\d+")) {
                             material = Material.SLIME_BALL;
                         } else {
-                            material = Material.valueOf(result.getString(7));
+                            material = Material.valueOf(mat);
                         }
                     } catch (IllegalArgumentException | NullPointerException e) {
                         HubParkour.getInstance().getLogger().log(Level.SEVERE, "One of your parkours has a material that is not valid. We have defaulted the value to a Slime Ball. Please change this using edit mode. Stack trace:", e);

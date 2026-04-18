@@ -74,6 +74,7 @@ public class ItemClickListener implements Listener {
                                     l.setZ(l.getZ() + 0.5);
                                     p.setVelocity(new Vector(0, 0, 0));
                                     p.teleport(l);
+                                    player.restart();
                                     ConfigUtil.sendMessage(p, "Messages.Commands.Reset.Successful", "You have been teleported to the start.", true, Collections.emptyMap());
                                     FallListener.getHasTeleported().add(p);
                                     new BukkitRunnable() {

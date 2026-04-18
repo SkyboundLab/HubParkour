@@ -255,6 +255,7 @@ public class HubParkour extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new LeaveListener(), this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new MountListener(), this);
+        me.block2block.hubparkour.listeners.GSitListener.register(Bukkit.getPluginManager(), this);
         Bukkit.getPluginManager().registerEvents(new CommandListener(), this);
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);

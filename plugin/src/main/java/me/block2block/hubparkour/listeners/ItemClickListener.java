@@ -150,6 +150,14 @@ public class ItemClickListener implements Listener {
                                     new BukkitRunnable(){
                                         @Override
                                         public void run() {
+                                            if (player.getLastReached() > 0) {
+                                                Location cancelLoc = parkour.getRestartPoint().getLocation().clone();
+                                                cancelLoc.setX(cancelLoc.getX() + 0.5);
+                                                cancelLoc.setY(cancelLoc.getY() + 0.5);
+                                                cancelLoc.setZ(cancelLoc.getZ() + 0.5);
+                                                p.setVelocity(new Vector(0, 0, 0));
+                                                p.teleport(cancelLoc);
+                                            }
                                             player.end(ParkourPlayerFailEvent.FailCause.LEAVE);
                                         }
                                     }.runTaskLater(HubParkour.getInstance(), 1);
